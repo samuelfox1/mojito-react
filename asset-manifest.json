@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mo-jito/static/css/main.1a30abe7.chunk.css",
+    "main.js": "/mo-jito/static/js/main.53cfb408.chunk.js",
+    "main.js.map": "/mo-jito/static/js/main.53cfb408.chunk.js.map",
+    "runtime-main.js": "/mo-jito/static/js/runtime-main.630403ce.js",
+    "runtime-main.js.map": "/mo-jito/static/js/runtime-main.630403ce.js.map",
+    "static/js/2.5d3b7df2.chunk.js": "/mo-jito/static/js/2.5d3b7df2.chunk.js",
+    "static/js/2.5d3b7df2.chunk.js.map": "/mo-jito/static/js/2.5d3b7df2.chunk.js.map",
+    "static/js/3.0ac4c0aa.chunk.js": "/mo-jito/static/js/3.0ac4c0aa.chunk.js",
+    "static/js/3.0ac4c0aa.chunk.js.map": "/mo-jito/static/js/3.0ac4c0aa.chunk.js.map",
+    "index.html": "/mo-jito/index.html",
+    "static/css/main.1a30abe7.chunk.css.map": "/mo-jito/static/css/main.1a30abe7.chunk.css.map",
+    "static/js/2.5d3b7df2.chunk.js.LICENSE.txt": "/mo-jito/static/js/2.5d3b7df2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.630403ce.js",
+    "static/js/2.5d3b7df2.chunk.js",
+    "static/css/main.1a30abe7.chunk.css",
+    "static/js/main.53cfb408.chunk.js"
+  ]
+}
