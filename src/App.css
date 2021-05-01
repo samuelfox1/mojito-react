@@ -3,6 +3,10 @@
   --orange-thin: rgba(252, 112, 5, 0.671);
 }
 
+body {
+  margin: 0 10% 5% 10%;
+}
+
 
 .App {
   text-align: center;
@@ -74,4 +78,18 @@ h5 {
 
 img {
   border-radius: 1rem;
+  max-width: 90%;
+}
+
+@media only screen and (max-width: 768px) {
+  /* body {
+    background-color: lightblue;
+  } */
+  body {
+    margin: 0 0 0 0;
+  }
+
+  img {
+    max-width: 100;
+  }
 }
