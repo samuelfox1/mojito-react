@@ -4,6 +4,7 @@ import Pictures from './utils/images.json'
 import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
 import SpeedControls from './components/SpeedControls'
 import SlideToggle from './components/formInputs/SlideToggle/SlideToggle'
+import DisplayCount from './components/DisplayCount'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
 
   const getRandomIdx = () => Math.floor(Math.random() * pictureList.length)
   const updateCount = () => { setCounter((counter) => counter + 1) }
+
 
   const getNextPicture = () => {
     const idx = getRandomIdx()
@@ -41,15 +43,18 @@ function App() {
     setHistory(copy)
   }
 
+  const clearTimer = () => {
+    setTimer(clearTimeout(timer))
+  }
+
 
 
   useEffect(() => {
-    setTimer(clearTimeout(timer))
     if (!autoScroll) getNextPicture()
     else {
+      getNextPicture()
       setTimer(
         setTimeout(() => {
-          getNextPicture()
           updateCount()
         }, speed * 1000)
       )
@@ -60,21 +65,24 @@ function App() {
     <div className="App">
       <h1>babe's pups</h1>
       <div className="flex">
+        <div className="static__controls">
 
-        {history.length > 1
-          ? <button className="btn__back" onClick={handleBack}><ArrowBackIosOutlinedIcon /></button>
-          : <button className="btn__back" disabled><ArrowBackIosOutlinedIcon /></button>
-        }
+          {history.length > 1
+            ? <button className="btn__back" onClick={handleBack}><ArrowBackIosOutlinedIcon /></button>
+            : <button className="btn__back" disabled><ArrowBackIosOutlinedIcon /></button>
+          }
 
-        {/* {!autoScroll
+          {/* {!autoScroll
           ? <button className="btn__auto__cycle" onClick={() => setAutoScroll(true)}><AutorenewOutlinedIcon /></button>
           : <button className="btn__auto__cycle btn__active" onClick={() => setAutoScroll(false)}><HighlightOffOutlinedIcon /> </button>
         } */}
 
-        <SlideToggle className="btn__auto__cycle" autoScroll={autoScroll} setAutoScroll={setAutoScroll} />
+          <SlideToggle className="btn__auto__cycle" autoScroll={autoScroll} setAutoScroll={setAutoScroll} />
+        </div>
+        <DisplayCount counter={counter} />
+
         {autoScroll
           ? <>
-            <p className="speed">{speed} sec</p>
             <SpeedControls
               speedAdjustment={speedAdjustment}
               setAutoScroll={setAutoScroll}
@@ -84,16 +92,17 @@ function App() {
           </>
           : null}
 
-        {history.length <= 1 && !autoScroll ? <h5 className="mb5"> (tap pic or circle to start)</h5> : null}
+        {counter < 1 ? <h5> (tap pic or circle to start)</h5> : null}
 
       </div>
-      <h6 className="count">{counter}</h6>
 
       <img
         src={src}
         width="90%"
         alt="random doggy"
-        onClick={updateCount}
+        // onClick={handleImgClick}
+        onMouseDown={clearTimer}
+        onMouseUp={updateCount}
       />
     </div>
   );

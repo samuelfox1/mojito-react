@@ -46,44 +46,26 @@ h1 {
   /* background-color: red; */
   display:flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid var(--orange-thin) ;
   padding: .5rem 5%
 }
 
-.count {
-  margin: .5rem 0 0 5% ;
-  width:90vw;
-  border-top: var(--orange-thin);
-  border-bottom: var(--orange-thin);
+.static__controls {
+  display: flex;
+  align-items: center;
+  /* width: 8rem; */
 }
-
-h5 {
-  /* margin-bottom: -10rem;
-  z-index: 2; */
-  margin: 0 5% 5% 0;
-  color:var(--orange);
-  /* background: -webkit-linear-gradient(var(--orange), rgb(43, 64, 45));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-}
-
-.btn__back, .btn__speed{
+.btn__back{
   width: 3rem;
-  margin: 0 5% 0 0;
+  margin-right: 1rem;
   background-color: var(--orange-thin);
   font-size: 2rem;
   border-radius: .5rem;
+  padding:0;
 }
-
-.speed {
-  margin-right: 5%;
-  padding:none;
-}
-
 .btn__auto__cycle {
-  margin-right: 5%;
   width: 3rem;
-  /* display: flex; */
   font-size: 2rem;
   margin-bottom:1rem;
   border-radius: .5rem;
@@ -91,27 +73,74 @@ h5 {
   color: rgba(104, 252, 5, 0.397);
 }
 
+.static__speed__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* position: absolute;
+  left: 1rem; */
+}
+.speed {
+  margin: 0 .5rem 0 0;
+}
+.btn__speed{
+  width: 3rem;
+  background-color: var(--orange-thin);
+  font-size: 2rem;
+  border-radius: .5rem;
+}
 
+.count__container {
+  display: block;
+  padding: .1rem;
+  border-top: var(--orange-thin);
+  border-bottom: var(--orange-thin);
+  color: var(--orange-thin);
+}
+
+.count__number {
+  font-size: 1em;
+  letter-spacing: .3rem;
+  margin: 0;
+}
+
+.count__text {
+  margin:0;
+}
 
 img {
-  margin: 5% 5% 5% 5%;
+  margin-top: 2.5%;
   border-radius: 1rem;
   width: 50vh
 }
 
-/* .mb5 {
-margin-bottom: 5%;
-} */
 
 @media only screen and (max-width: 768px) {
-  /* body {
-    background-color: lightblue;
-  } */
+
   body {
-    margin: 0 0 0 0;
+    margin: 0 5% 5% 5%;
   }
 
-  img {
-    max-width: 100;
+  .static__speed__controls {
+    position: inherit;
+    width: inherit;
+    right: 1rem;
   }
+img {
+ max-width: 90vw
+}
+}
+
+@media only screen and (max-width: 320px) {
+  .flex {
+        flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  img {
+    margin-top: 2.5%;
+    border-radius: 1rem;
+    width: 90vw
+  }
+  
 }

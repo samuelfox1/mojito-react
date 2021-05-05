@@ -7,11 +7,11 @@
 }
 
 .switch {
-  margin: 0 5% 0 0;
     position: relative;
     display: inline-block;
-    width: 60px !important;
+    width: 64px;
     height: 34px;
+    margin-right: 5%;
   }
   
   .switch input { 

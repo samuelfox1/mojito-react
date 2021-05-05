@@ -9,7 +9,13 @@ export default function SpeedControls({ speed, speedAdjustment, setSpeed }) {
     const reduceSpeed = () => speed + speedAdjustment
 
     return (
-        <>
+        <div className="static__speed__controls">
+            <div>
+
+                <p className="speed">{speed}</p>
+                <p className="speed">sec</p>
+            </div>
+
             {speed > .5
                 ? <button className="btn__speed" onClick={() => setSpeed(increaseSpeed())}><ExpandMoreIcon /></button>
                 : <button className="btn__speed" disabled><ExpandMoreIcon /></button>
@@ -18,6 +24,6 @@ export default function SpeedControls({ speed, speedAdjustment, setSpeed }) {
                 ? <button className="btn__speed" onClick={() => setSpeed(reduceSpeed())}><ExpandLessIcon /></button>
                 : <button className="btn__speed" disabled><ExpandLessIcon /></button>
             }
-        </>
+        </div>
     )
 }

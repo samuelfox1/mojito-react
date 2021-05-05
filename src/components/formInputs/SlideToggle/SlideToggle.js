@@ -5,7 +5,6 @@ export default function SlideToggle({ autoScroll, setAutoScroll }) {
 
     const handleCheck = () => {
         setAutoScroll(!autoScroll)
-        console.log('autoScroll')
     }
 
     return (
