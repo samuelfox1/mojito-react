@@ -22,6 +22,7 @@ function App() {
 
   const getRandomIdx = () => Math.floor(Math.random() * pictureList.length)
   const updateCount = () => { setCounter((counter) => counter + 1) }
+  const clearTimer = () => { setTimer(clearTimeout(timer)) }
 
 
   const getNextPicture = () => {
@@ -43,13 +44,8 @@ function App() {
     setHistory(copy)
   }
 
-  const clearTimer = () => {
-    setTimer(clearTimeout(timer))
-  }
-
-
-
   useEffect(() => {
+    clearTimer()
     if (!autoScroll) getNextPicture()
     else {
       getNextPicture()
