@@ -55,7 +55,7 @@ function App() {
       getNextPicture()
       setTimer(
         setTimeout(() => {
-          updateCount()
+          if (autoScroll) updateCount()
         }, speed * 1000)
       )
     }
