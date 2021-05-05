@@ -111,7 +111,8 @@ h1 {
 img {
   margin-top: 2.5%;
   border-radius: 1rem;
-  width: 50vh
+  width: 50vh;
+  user-select: none;
 }
 
 
