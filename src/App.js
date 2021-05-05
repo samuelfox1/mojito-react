@@ -11,7 +11,7 @@ function App() {
   const timerSpeed = 3
   const speedAdjustment = .5
 
-  const [counter, setCounter] = useState(parseInt(localStorage.getItem('cuteCount')) || 0)
+  const [counter, setCounter] = useState(parseInt(localStorage.getItem('cuteCount')) || 1)
   const [pictureList, setPictureList] = useState(Pictures.map((x) => x.URL))
   const [autoScroll, setAutoScroll] = useState(false)
   const [speed, setSpeed] = useState(timerSpeed)
@@ -21,9 +21,11 @@ function App() {
 
 
   const getRandomIdx = () => Math.floor(Math.random() * pictureList.length)
-  const updateCount = () => { setCounter((counter) => counter + 1) }
   const clearTimer = () => { setTimer(clearTimeout(timer)) }
-
+  const updateCount = () => {
+    setCounter(counter + 1)
+    localStorage.setItem('cuteCount', counter + 1)
+  }
 
   const getNextPicture = () => {
     const idx = getRandomIdx()
@@ -33,7 +35,6 @@ function App() {
     setSrc(newSrc)
     setPictureList(pictureList.length === 0 ? Pictures.map((x) => x.URL) : copy)
     setHistory([...history, newSrc])
-    localStorage.setItem('cuteCount', counter)
   }
 
   const handleBack = () => {
@@ -46,15 +47,15 @@ function App() {
 
   useEffect(() => {
     clearTimer()
-    if (!autoScroll) getNextPicture()
-    else {
-      getNextPicture()
-      setTimer(
-        setTimeout(() => {
-          if (autoScroll) updateCount()
-        }, speed * 1000)
-      )
-    }
+    getNextPicture()
+
+    if (!autoScroll) return
+
+    setTimer(
+      setTimeout(() => {
+        if (autoScroll) updateCount()
+      }, speed * 1000)
+    )
   }, [counter, autoScroll])
 
   return (
@@ -73,7 +74,12 @@ function App() {
           : <button className="btn__auto__cycle btn__active" onClick={() => setAutoScroll(false)}><HighlightOffOutlinedIcon /> </button>
         } */}
 
-          <SlideToggle className="btn__auto__cycle" autoScroll={autoScroll} setAutoScroll={setAutoScroll} />
+          <SlideToggle
+            className="btn__auto__cycle"
+            autoScroll={autoScroll}
+            setAutoScroll={setAutoScroll}
+            updateCount={updateCount}
+          />
         </div>
         <DisplayCount counter={counter} />
 
@@ -88,7 +94,7 @@ function App() {
           </>
           : null}
 
-        {!autoScroll && counter < 1 ? <h5> (tap pic or slider to start)</h5> : null}
+        {!autoScroll && counter === 1 ? <h5> (tap pic or slider to start)</h5> : null}
 
       </div>
 

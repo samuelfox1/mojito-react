@@ -1,10 +1,12 @@
+import { Update } from '@material-ui/icons'
 import React, { useState } from 'react'
 import './style.css'
 
-export default function SlideToggle({ autoScroll, setAutoScroll }) {
+export default function SlideToggle({ autoScroll, setAutoScroll, updateCount }) {
 
     const handleCheck = () => {
         setAutoScroll(!autoScroll)
+        updateCount()
     }
 
     return (
