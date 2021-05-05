@@ -88,7 +88,7 @@ function App() {
           </>
           : null}
 
-        {counter < 1 ? <h5> (tap pic or slider to start)</h5> : null}
+        {!autoScroll && counter < 1 ? <h5> (tap pic or slider to start)</h5> : null}
 
       </div>
 
